@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>My First Angular PAge</title>
+    <!-- YOU CAN ALSO LOAD ANGULAR VIA CDN, IT WILL JUST BE SLOWER -->
+    <script src="bower_components/angular/angular.js" charset="utf-8"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('divController', ['$scope', function($scope) {
+            $scope.myName = 'Subha'; // your name!
+            $scope.myFavoriteFood = 'Indian Food';
+            $scope.myFavoriteColor = 'Orange';
+        }]);
+    </script>
+</head>
+
+<body>
+    <div ng-controller="divController">
+      <h1>About {{myName}}</h1>
+        <p>Hello, my name is: {{myName}}, my favorite food is: {{myFavoriteFood}}, my favorite color is: {{myFavoriteJSLibrary}}</p>
+        <p> OR </p>
+        <p>Hello, my name is: <span ng-bind="myName"></span>, my favorite language is: <span ng-bind="myFavoriteLanguage"></span>, my favorite color is: <span ng-bind="myFavoriteColor"></span></p>
+    </div>
+    <div ng-controller = "divTwoController">
+      <h2>About {{myFavoriteFood}} </h2>
+    </div>
+</body>
+
+</html>
