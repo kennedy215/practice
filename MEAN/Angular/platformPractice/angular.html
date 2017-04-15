@@ -1,0 +1,63 @@
+<html ng-app=''>
+    <head>
+      <script src="bower_components/angular/angular.js"></script>
+    </head>
+    <body>
+
+      <!-- <h1> {{ "ng-Bind" }} </h1>
+      <h1 ng-bind=" 10 + 80 "<h1> -->
+<!--
+      <h1> {{ "{}"}} </h1>
+      <h1 ng-bind=" 33 " </h1>
+
+      <h1> {{" Woah "}} </h1>
+      <h1 ng-bind=" 60 " </h1> -->
+
+
+      <!-- <div ng-init ="students=['Mike', 'John', 'Trey', 'India']">
+        <ul>
+          <li ng-repeat="student in students"> {{student}}</li>
+        </ul>
+      </div> -->
+
+      <!-- One ng type can run at a time -->
+      <!-- You can run multiple of the same kind of ng -->
+
+      <!-- <div ng-init="students=['Mike', 'John', 'Trey', 'India']">
+        <ul>
+      <li ng-repeat="student in students">{{student}}</li>
+        </ul>
+
+      <div ng-init="monsters=['Vampire', 'Zombies', 'Demons', 'Spirits']">
+          <ul>
+      <li ng-repeat="monster in monsters">{{monster}}</li>
+          </ul>
+
+
+      <div ng-init = "friends = ['Henry', 'Thomas', 'Desiree']">
+          <ul>
+      <li ng-repeat="friend in friends">{{friend}}</li>
+      </div> -->
+
+      <div ng-init="class=[{name: 'Henry', age: 33}, {name: 'Olive', age: 39}, {name: 'Antwan', age: 32}]">
+    <ul>
+        <li ng-repeat="classmate in class">{{classmate.name}}, {{classmate.age}}</li>
+    </ul>
+  </div>
+
+    <div ng-init="students=[{name: 'Mike', age: 34}, {name: 'John', age: 24}, {name: 'Trey', age: 24}, {name: 'India', age: 35}]">
+  <ul>
+      <li ng-repeat="student in students">{{student.name}}, {{student.age}}</li>
+  </ul>
+  </div>
+
+  <div ng-init="superheroes=[{name: 'Superman', power: 'invulnerability'}, {name: 'Batman', power: 'none'}]">
+     <li ng-repeat ="superhero in superheroes">{{superhero.name}}, {{superhero.power}}</li>
+  </div>
+
+  <div ng-init="artists=[{name: 'Dru Hill', music: 'RnB'}, {name: 'DMX', music: 'Rap'}]">
+    <li ng-repeat ="artist in artists">{{artist.name}}, {{artist.music}}</li>
+
+
+    </body>
+</html>
