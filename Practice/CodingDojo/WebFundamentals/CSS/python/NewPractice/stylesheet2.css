@@ -1,0 +1,225 @@
+/*all other descriptions*/
+*{
+    margin: 0 auto;
+    font-family: Helvetica;
+    font-weight: 100;
+
+}
+/*wrapper the div of all Divs Div 1*/
+.wrapper{
+    width:970px;
+    height: auto;
+    background-color:aqua;
+
+}
+
+/*Properties above are the whole canvas this is where Div1 resides this layer has to have width and length defined!
+for the lego method to work!*/
+
+.top-text{
+    background-color: brown;
+    display: block;
+    width:970px;
+    height:30px;
+}
+
+/*top text*/
+.text-size{
+    background-color:blue;
+    display: inline-block;
+    width:130px;
+    height:24px;
+    margin-left: 800px;
+
+
+}
+.header{
+    background-color: green;
+    display: block;
+    width: 970px;
+    height:100px;
+}
+
+/*header*/
+.logo{
+    display: inline-block;
+    width:350px;
+    height:100px;
+}
+
+}
+
+.search-bar{
+    background-color:red;
+    display: inline-block;
+    width:200px;
+    height:30px;
+    margin-left:730px;
+    margin-top:20px;
+    text-align: left;
+    /*vertical-align:top;*/
+}
+
+
+}
+.searchForm{
+    width: 300px;
+    height: 50px;
+    background-color: purple;
+    vertical-align: top;
+
+}
+
+
+}
+.search-input{
+    display: inline;
+
+}
+
+.go-button{
+    display: inline;
+
+}
+
+
+.navbar{
+    background-color: blue;
+    display: block;
+    width: 970px;
+    height:50px;
+}
+
+.navbar ul{
+    list-style-type: none;
+}
+.navbar ul li{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    margin-left: 50px;
+}
+.main-content{
+    background-color: gray;
+    display: block;
+    width:970px;
+    height:300px;
+
+}
+
+.side-bar{
+    display: inline-block;
+    width:300px;
+    height:300px;
+    vertical-align: top;
+}
+
+
+.side-bar-detail{
+    vertical-align: top;
+    background-color: aqua;
+    width: 250px;
+    height: 200px;
+    padding:30px;
+    text-align:center;
+    font-size: 17px;
+}
+
+.side-bar-detail ul{
+    list-style:none;
+
+}
+
+.golden_arrow {
+    color:yellow;
+    font-size: 10px;
+    margin-top:20px;
+}
+
+.right-content{
+    background-color: yellow;
+    display: inline-block;
+    width:650px;
+    height:300px;
+    vertical-align:top;
+}
+
+.right-content h3{
+    text-align: center;
+
+}
+/*sub-content*/
+
+}
+
+.sub-content{
+    background-color: orange;
+    display: block;
+    width:970px;
+    height:225px;
+}
+
+
+.box-left{
+    background-color: blue;
+    display: inline-block;
+    width:480px;
+    height:225px;
+}
+
+.box-right{
+    background-color:blue;
+    display: inline-block;
+    width:450px;
+    height:225px;
+
+}
+/*footer*/
+
+.footnote{
+    background-color: purple;
+    display: block;
+    width:970px;
+    height:100px;
+
+}
+
+.list{
+    background-color:yellow;
+    display: inline-block;
+    width:965px;
+    height:20px;
+    margin-top:40px;
+
+}
+.copyright{
+    background-color:yellow;
+    display: inline-block;
+    width:80px;
+    height:15px;
+    margin-top:15px;
+    margin-left:450px;
+
+
+}
+
+
+/* Properties above are the main containters div2 layers all these layers are display:block! They are the extra container
+that holds the elements below */
+
+
+
+
+
+
+/*main content*/
+
+
+
+
+
+/* Properties above(starting at text-size - copyright are the are display: inline-block! They move within the block!
+the layers go in deeper ;*/
+
+
+

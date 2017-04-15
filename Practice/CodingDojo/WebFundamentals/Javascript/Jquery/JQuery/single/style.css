@@ -1,0 +1,17 @@
+.wrapper{
+  background-color: green;
+  width: 700px;
+}
+
+.head{
+  display:inline-block;
+}
+
+div{
+  display: inline-block;
+  background-color:red;
+  width:150px;
+  height:150px;
+  margin:20px;
+  text-align:center;
+}
