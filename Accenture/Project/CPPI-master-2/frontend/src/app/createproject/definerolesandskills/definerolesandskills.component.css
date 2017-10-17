@@ -1,0 +1,60 @@
+ .md-min-width {
+  min-width: 180px;
+ }
+
+ .md-min-heigh {
+  min-height: 50px;
+ }
+
+ .main-div-layout {
+  padding: 25px;
+ }
+
+ .counter-button {
+  background-color: white;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+ }
+
+ .numberCircle {
+  border-radius: 50%;
+  width: 25px;
+  font-size: 15px;
+  color: white;
+  background-color: green;
+  border: none;
+ }
+
+ .numberCircle span {
+  text-align: center;
+  line-height: 25px;
+  display: block;
+ }
+
+ .md-list.make-scrollable {
+  height: 300px;
+  overflow-y: scroll;
+ }
+
+
+ .droppable {
+  padding: 2px;
+
+  min-height: 60px;
+ }
+
+ .highlight {
+  border: solid 1px silver;
+ }
+
+ .dropItem {
+  display: inline-block;
+  padding: 2px 4px;
+  margin: 4px;
+  border: 1px solid #aaa;
+  background-color: #aaf;
+ }
+ 

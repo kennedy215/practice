@@ -1,0 +1,25 @@
+<div  layout="row" layout-sm="column">
+  <div flex="50" class="tool-list" *ngIf="tools?.length>0">
+    <div *ngFor="let tool of tools; let i=index;" flex layout-wrap (click)="showTool(tool,i)" style="cursor: pointer;" class="mat-nav-list"
+      [class.selectedIndex]="selectedIndex===i">
+      <div style="display: flex;padding-left: 8px;">
+        <md-checkbox aria-label="Checkbox 2" class="md-warn md-align-top-left md-list-avatar" [value]="tool.id" (change)="addTool($event,tool)"
+          [checked]="isCheckBoxSelected(tool)"></md-checkbox>
+          <div style="padding-left: 8px;">
+            <h4 style="margin: 0;">{{tool.toolName}}</h4>
+            <p style="margin-top: 8px;" class="md-secondary"> {{tool.description}} </p>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div flex="50" *ngIf="tools?.length===0">
+    <span>There is no tool in this section yet.</span>
+  </div>
+  <div flex="50" class="selectedIndex">
+    <div *ngFor="let sample of _tool?.samples">
+      <md-card>
+        <img md-card-image src="{{sample}}">
+      </md-card>
+    </div>
+  </div>
+</div>

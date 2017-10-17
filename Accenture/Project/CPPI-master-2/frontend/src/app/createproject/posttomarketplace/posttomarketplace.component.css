@@ -1,0 +1,87 @@
+div > span{
+    font-family: Arial;
+    font-size: 18px;
+    color: #000000;
+    text-decoration: none solid rgb(0, 0, 0);
+    height: 21px;
+ }
+
+ div>span.bold-font{
+     font-weight: bold;
+ }
+
+  .md-min-width {
+   min-width: 145px;
+ }
+
+ .md-min-heigh {
+   min-height: 50px;
+ }
+
+ .counter-button {
+    background-color: white;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.numberCircle {
+    display: inline-block;
+    border-radius: 50%;
+    width: 27px !important;
+    height: 27px !important;
+    color: white;
+    background-color:#5dd662;
+    border: none;
+    line-height: 27px;
+    font-size: 15px !important;
+}
+.numberCircle span {
+    text-align: center;
+    line-height: 25px;
+    display: block;
+}
+
+.numCirContainer {
+    position: absolute;
+    width: 100%;
+    top: 32px;
+    left: 2px;
+
+}
+
+.description-font{
+    margin: 10px;
+    width: 796px;
+    font-family: Arial;
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none solid rgb(0, 0, 0);
+}
+
+.title-container{
+    height:21px;
+    margin: 10px;
+}
+
+.title-container>span{
+    padding-right: 15px;
+}
+.title-container>md-icon{
+    font-size: 20px; 
+    fill: #616161;
+}
+.post-button{
+    width: 195px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: #393a39;
+
+    font-family: Arial;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none solid rgb(255, 255, 255);
+}
+

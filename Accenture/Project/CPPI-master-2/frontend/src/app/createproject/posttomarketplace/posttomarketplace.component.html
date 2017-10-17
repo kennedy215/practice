@@ -1,0 +1,156 @@
+<form name="posttomarketplace">
+  <ng-template tdLoading [tdLoadingUntil]="!loading" tdLoadingStrategy="overlay">
+    <div *ngIf="currentProject; let currentProject;" flex layout-wrap>
+      <md-card class="main-div-layout" tdMediaToggle="gt-xs" [mediaClasses]="['push']" style="padding: 30px;">
+        <div layout="column">
+          <div *ngIf="!currentProject.isEditable" layout="row" class="title-container" (click)="currentProject.isEditable=!currentProject.isEditable">
+            <span>Project Name :</span>{{currentProject.name}}
+          </div>
+
+          <div layout="row" *ngIf="currentProject.isEditable">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Project name" name="projectName" [(ngModel)]="currentProject.name" (blur)="currentProject.isEditable=!currentProject.isEditable">
+            </md-input-container>
+          </div><br/>
+          <div layout="row" class="title-container">
+            <span>
+               Goal :
+              </span>{{currentProject.target}}
+            <a md-mini-fab class="btn-mini" [routerLink]="['../']" [queryParams]="{ goal: 1 }">
+              <md-icon aria-hidden="true">mode_edit</md-icon>
+            </a>
+
+          </div><br/>
+          <div layout="row" class="title-container">
+            <div *ngIf="!currentProject.isDesEditable" layout="row" (click)="currentProject.isDesEditable=!currentProject.isDesEditable">
+              <span style="margin-right: 5px;">Description: </span>
+              <div>
+                {{currentProject.description}}
+              </div>
+            </div>
+            <div *ngIf="currentProject.isDesEditable" layout="row" flex>
+              <md-input-container flex>
+                <textarea type="textarea" mdInput placeholder="Description" name="projectDescription" [(ngModel)]="currentProject.description"
+                  (blur)="currentProject.isDesEditable=!currentProject.isDesEditable"></textarea>
+              </md-input-container>
+            </div>
+          </div><br/><br/>
+
+          <div layout="row">
+            <div flex>
+              <div layout="row" class="title-container">
+                <span>
+                   Anticipated Deliverable
+                 </span>
+                <a md-mini-fab class="btn-mini" [routerLink]="['../']" [queryParams]="{ deliverables: 1 }">
+                  <span>
+                      <md-icon aria-hidden="true">mode_edit</md-icon>                    
+                  </span>
+                </a>
+              </div>
+              <div style="max-height: 300px;overflow: auto;margin-right: 50px;">
+                <div style="position: relative;" *ngFor="let del of currentProject?.anticipatedDeliverables;">
+                  <md-grid-list cols="2" rowHeight="2:1">
+                    <div *ngFor="let sample of del.samples">
+                      <img md-card-image src="{{sample}}" style="width: 100%; height: 100%; border: none;">
+                    </div>
+                    <!-- <md-grid-tile>2</md-grid-tile>
+                    <md-grid-tile>3</md-grid-tile>  -->
+                  </md-grid-list>
+                  <div style="position: absolute;top:0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.48);z-index:11;">
+                    <!-- <h5 style="color:white;margin: 10px;text-align: center;">Post to Market Place</h5> -->
+                    <div style="position: absolute;top:50%;left:50%; width: 150px; margin: -30px -75px; padding: 1px;text-align: center; border-radius: 5px; background: rgba(255,255,255,0.48);">
+                      <h3>{{del.title}}</h3>
+                    </div>
+
+                  </div>
+                </div>
+              </div><br/>
+              <div>
+                <div layout="row" class="title-container">
+                  <span>
+                   Introductory material
+                 </span>
+                </div>
+                <app-file-list [containerName]="'upload1'" [pocketTitle]="'Pocket1'" [fileList]="pocket1Uploads" (onUpload)="uploadProjectPart1($event)"
+                  (onDelete)="deleteFile($event)"></app-file-list>
+
+                <app-file-list [containerName]="'upload2'" [pocketTitle]="'Pocket2'" [fileList]="pocket2Uploads" (onUpload)="uploadProjectPart1($event)"
+                  (onDelete)="deleteFile($event)"></app-file-list>
+
+                <app-file-list [containerName]="'upload3'" [pocketTitle]="'Pocket3'" [fileList]="pocket3Uploads" (onUpload)="uploadProjectPart1($event)"
+                  (onDelete)="deleteFile($event)"></app-file-list>
+
+                <app-file-list [containerName]="'upload4'" [pocketTitle]="'Pocket4'" [fileList]="pocket4Uploads" (onUpload)="uploadProjectPart1($event)"
+                  (onDelete)="deleteFile($event)"></app-file-list>
+              </div>
+            </div>
+
+            <div flex>
+              <div layout="row" class="title-container">
+                <span>
+                  Team Structure
+                </span>
+                <a md-mini-fab class="btn-mini" [routerLink]="['../rolesandskills']">
+                  <span>
+                      <md-icon aria-hidden="true">mode_edit</md-icon>                    
+                  </span>
+                </a>
+              </div>
+              <div flex layout="row" layout-wrap>
+                <div *ngFor="let member of currentProject.teamStructure">
+                  <span class="mat-button-wrapper">
+                  <div class="mat-button-ripple" md-ripple>
+                    <md-card class="item-card-container  md-min-width md-min-height md-card-selectable">
+                      <md-card-content style="text-align: center">
+                          <div layout="column" style="position:relative">
+                            <i class="fa fa-user" style="font-size: 50px" aria-hidden="true"></i>
+                            <div class="numCirContainer text-center">
+                              <span class="numberCircle">
+                                {{member.requiredUserCount}}
+                              </span>
+                </div>
+              </div>
+              <p>
+                {{member.roleName}}
+              </p>
+              </md-card-content>
+      </md-card>
+      </div>
+      </span>
+      </div>
+      </div>
+      <div layout="column">
+        <div layout="row" class="title-container">
+          <span>
+                  Additional Details
+                </span>
+
+          <a md-mini-fab class="btn-mini" [routerLink]="['../ideaparameters']">
+                  <span>
+                      <md-icon aria-hidden="true">mode_edit</md-icon>                    
+                  </span>
+                </a>
+        </div>
+        <div>
+          Talent segment: UI/UX, Design
+        </div>
+        <div>
+          Tools : {{selectedTools}}
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <div layout="row" style="margin-top:80px" flex>
+      <div flex="40"></div>
+      <div flex="60">
+        <button md-button class="post-button" type="button">View example job posts</button>
+        <button md-button class="post-button" type="button">Assess job posts</button>
+        <button md-button class="post-button" (click)="postProjectToMarket(currentProject)" style="background-color: #39a84c;"> Post to Marketplace</button>
+      </div>
+    </div>
+    </md-card>
+    </div>
+  </ng-template>
+</form>

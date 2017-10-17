@@ -1,0 +1,64 @@
+<div layout="row" layout-align="center center">
+    <div flex="20">
+        <i class="fa fa-user" style="font-size: 100px" aria-hidden="true"></i>
+    </div>
+    <div flex="80">
+        <!--  <div md-dialog-content>{{ data.roleTitle }}</div>
+     <p>Nunc venenatis, nunc at consequat vulputate, lorem diam tristique augue, eget varius nisi ante at sem. Sed ut dapibus lorem. Pellentesque bibendum, tellus et consectetur suscipit, erat elit auctor velit, eu rutrum mi leo sit amet nisi. Vestibulum quam nunc, interdum sed eleifend sed, pretium ut tortor. Nam et nulla hendrerit, commodo velit sit amet, iaculis leo. Nulla a odio sit amet lorem egestas sollicitudin. Ut facilisis in leo ac placerat.
+      </p>-->
+
+        <h3 class="tc-green-500 pull-top-xs">{{ data.roleTitle }}</h3>
+        <p class="md-body-1">Nunc venenatis, nunc at consequat vulputate, lorem diam tristique augue, eget varius nisi ante at sem. Sed ut dapibus lorem. Pellentesque bibendum, tellus et consectetur suscipit, erat elit auctor velit, eu rutrum mi leo sit amet nisi. Vestibulum
+            quam nunc, interdum sed eleifend sed, pretium ut tortor. Nam et nulla hendrerit, commodo velit sit amet, iaculis leo. Nulla a odio sit amet lorem egestas sollicitudin. Ut facilisis in leo ac placerat.
+        </p>
+
+
+    </div>
+</div>
+<div ng-controller="AppCtrl" ng-cloak layout-gt-sm="row" layout="column">
+    <div flex-gt-sm="50" flex>
+
+        <!--<md-toolbar layout="row" class="md-hue-3">
+      <div class="md-toolbar-tools">
+        <span>Selected Skills</span>
+      </div>
+    </md-toolbar>-->
+        <h4>Selected Skills</h4>
+
+        <!-- <md-toolbar layout="row" >
+      
+        <h3 class="tc-green-500 pull-top-xs">Selected Skills</h3>
+
+    </md-toolbar>-->
+
+        <md-list style=" height: 60%; overflow-y: scroll; border : 1px solid bgc-grey-400;">
+            <md-list-item *ngFor="let commonSkill of data.commonSkills">
+                <p class="md-body-1">{{ commonSkill }}</p>
+                <span flex></span>
+                <button md-icon-button>
+                    <md-icon ><i class="fa fa-minus" aria-hidden="true"></i></md-icon>
+                </button> </md-list-item>
+        </md-list>
+    </div>
+
+
+    <div flex-gt-sm="50" flex>
+
+        <h4>Other Skills</h4>
+
+        <md-list style=" height: 60%; overflow-y: scroll;">
+            <md-list-item *ngFor="let otherSkill of data.otherSkills">
+                <p class="md-body-1">{{ otherSkill }}</p>
+                <span flex></span>
+                <button md-icon-button>
+                    <md-icon ><i class="fa fa-plus" aria-hidden="true"></i></md-icon>
+                </button>
+            </md-list-item>
+        </md-list>
+    </div>
+</div>
+
+
+<div md-dialog-actions>
+    <button md-button md-dialog-close="Close">Close</button>
+</div>

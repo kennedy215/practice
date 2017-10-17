@@ -1,0 +1,51 @@
+.item-card-container {
+  width: 450px;
+  min-height: 222px;
+  margin: 10px;
+}
+
+.md-card-actions {
+  margin-top: auto !important;
+}
+md-toolbar {
+  background-color:#39a84c;
+  color:#ffffff;
+  font-size:22px;
+}
+.big-box {
+  overflow-y: auto;
+  height: 500px;
+}
+
+.small-box {
+  border: 1px solid;
+  height: 137px;
+}
+
+.small-icon{
+  padding: 20px;
+  border-radius: 50%;
+  background-color:#39a84c;
+  color:#ffffff;
+  align-items: center;
+}
+
+.box-titles {
+  display: inline-block;
+  margin-top:-10px;
+  font-size:20px;
+}
+.white-bar {
+  height:10px;
+  width:100%;
+  background-color:#ffffff;
+
+}
+.grey-bar {
+  background-color:#5A595C;
+  height:40px;
+  width:100%;
+  color:#ffffff;
+  text-align: center;
+  padding:10px 0px 20px;
+}

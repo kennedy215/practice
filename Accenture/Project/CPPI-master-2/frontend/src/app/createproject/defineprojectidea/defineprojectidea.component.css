@@ -1,0 +1,29 @@
+.md-width {
+ width: 185px !important;
+ min-width: 185px !important;
+ max-width: 185px !important;
+}
+
+.md-height {
+ height: 160px !important;
+ min-height: 160px !important;
+ max-height: 160px !important;
+}
+
+ .md-min-width {
+   min-width: 180px;
+ }
+
+ .md-min-height {
+   min-height: 50px;
+ }
+
+.drop-zone {
+ background-color: #2e7d32;
+}
+
+.item-card-container {
+  width: 350px;
+  min-height: 222px;
+}
+

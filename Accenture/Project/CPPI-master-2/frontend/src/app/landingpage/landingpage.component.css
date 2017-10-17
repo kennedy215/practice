@@ -1,0 +1,7 @@
+a.simplea,
+a:hover.simplea,
+a:focus.simplea,
+a:active.simplea 
+{
+text-decoration: none !important;
+}

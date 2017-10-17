@@ -1,0 +1,166 @@
+<form name="defineProjectIdea">
+  <ng-template tdLoading [tdLoadingUntil]="!loading" tdLoadingStrategy="overlay">
+    <div *ngIf="currentProject; let currentProject;" flex layout-wrap>
+      <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+        <td-steps>
+          <td-step #step1 label="Define your project" [active]="activateStep1" (activated)="activeStep1Event()" (deactivated)="deactiveStep1Event()"
+            [state]="stateStep1">
+            <ng-template td-step-label><span>Basic Parameters</span></ng-template>
+            <div class="pull-top-sm">
+              <div layout="row">
+                <h4 md-header>Please title your {{currentProject?.relProjectType?.title}}</h4>
+              </div>
+              <div layout="row">
+                <md-input-container flex>
+                  <input mdInput [(ngModel)]="currentProject.title" #titleControl="ngModel" type="text" required name="prjTitle">
+                  <md-hint align="start">
+                    <span [hidden]="!titleControl.errors?.required || titleControl.pristine" class="tc-red-600">Required</span>
+                  </md-hint>
+                </md-input-container>
+              </div>
+            </div>
+            <div layout="row">
+              <h4 md-header>What do you want to do in your {{currentProject?.relProjectType?.title}}? (Select One)</h4>
+            </div>
+            <div layout="row" layout-wrap flex>
+              <span class="mat-button-wrapper" [class.md-card-selectable]="potentialTarget.title !== currentProject.target" *ngFor="let potentialTarget of currentProject?.relProjectType?.potentialTargets"
+                (click)="onSelectPotentialTarget(potentialTarget)" [mdTooltip]="potentialTarget.description" [mdTooltipPosition]="'below'">
+              <div class="mat-button-ripple" md-ripple>
+                <md-card class="item-card-container md-width md-height" [class.bgc-green-600]="potentialTarget.title === currentProject.target" >
+                  <md-card-content style="text-align: center">
+                    <div [class.tc-green-400] = "potentialTarget.title !== currentProject.target" [class.tc-grey-50] = "potentialTarget.title === currentProject.target">
+                      <i class="fa {{potentialTarget.fontAwesomeIcon}}" style="font-size: 75px" aria-hidden="true"></i>
+                    </div>
+                    <p [class.tc-grey-50] = "potentialTarget.title === currentProject.target">{{potentialTarget.title}}</p>
+                  </md-card-content>
+                </md-card>
+              </div>
+            </span>
+            </div>
+            <md-divider class="push-top-md"></md-divider>
+            <div layout="row">
+              <h4 md-header>What is your motivation for doing this {{currentProject?.relProjectType?.title}}? (Select One)</h4>
+            </div>
+            <div layout="row" flex layout-wrap>
+              <span class="mat-button-wrapper" [class.md-card-selectable]="potentialMotivation.title !== currentProject.motivation" *ngFor="let potentialMotivation of currentProject?.relProjectType?.potentialMotivations"
+                (click)="onSelectPotentialMotivation(potentialMotivation)">
+              <div class="mat-button-ripple" md-ripple>
+                <md-card class="item-card-container  md-width md-height"  [class.bgc-green-600]="potentialMotivation.title === currentProject.motivation">
+                  <md-card-content style="text-align: center">
+                    <div [class.tc-green-400] = "potentialMotivation.title !== currentProject.motivation" [class.tc-grey-50] = "potentialMotivation.title === currentProject.motivation">
+                      <i class="fa {{potentialMotivation.fontAwesomeIcon}}" style="font-size: 75px" aria-hidden="true"></i>
+                    </div>
+                    <p [class.tc-grey-50] = "potentialMotivation.title === currentProject.motivation" layout-wrap>{{potentialMotivation.title}}</p>
+                  </md-card-content>
+                </md-card>
+              </div>
+            </span>
+            </div>
+            <md-divider class="push-top-md"></md-divider>
+            <div layout="row">
+              <h4 md-header>Briefly describe your {{currentProject?.relProjectType?.title}} project</h4>
+            </div>
+            <div layout="row" flex>
+              <p class="md-body-1 pull-top-md">Detail your Project in a few lines. This information will help prospective team members to have an overview
+                of the project goals and will help you find the right candidates for your team. Please title your Design
+                Sprint
+              </p>
+            </div>
+            <div layout="row">
+              <md-input-container flex>
+                <textarea mdInput [(ngModel)]="currentProject.description" #descriptionElement #descriptionControl="ngModel" name="prjDescription"
+                  rows="4"></textarea>
+                <md-hint align="end">
+                  <span>{{descriptionElement.value.length}}</span>
+                </md-hint>
+              </md-input-container>
+            </div>
+          </td-step>
+          <td-step #step2 label="Presentation" [active]="activateStep2" (activated)="activeStep2Event()" [state]="stateStep2" [disabled]="isStepTwoDisabled()">
+            <ng-template tdLoading [tdLoadingUntil]="!loadingStepTwo" tdLoadingStrategy="overlay">
+              <div layout="row">
+                <h4 md-header>How do you want to present your {{currentProject?.relProjectType?.title}}?</h4>
+              </div>
+              <div layout="row">
+                <div flex="60">
+                  <h3 class="md-subhead">Common Presentation</h3>
+                  <div layout="row" flex layout-wrap>
+
+                    <span class="mat-button-wrapper  md-card-selectable" *ngFor="let commonPresentation of commonPresentations | async;" (click)="onSelectPresentation(commonPresentation)">
+              <div class="mat-button-ripple" md-ripple>
+                <md-card class="item-card-container  md-width md-height"  [class.bgc-green-600]="checkPresentationSelected(commonPresentation)">
+                  <md-card-content style="text-align: center">
+                    <div [class.tc-grey-50] = "checkPresentationSelected(commonPresentation)">
+                      <p>{{commonPresentation['presentationTypeTitle']}}</p>
+                    </div>
+                  </md-card-content>
+                </md-card>
+              </div>
+            </span>
+                  </div>
+                  <h3 class="md-subhead">Other Presentation</h3>
+                  <div layout="row">
+                    <span class="mat-button-wrapper" *ngFor="let otherPresentation of otherPresentations | async;">
+                  <div class="mat-button-ripple" md-ripple>
+                    <md-card class="item-card-container  md-min-width md-min-height md-card-selectable" [class.bgc-green-600]="checkPresentationSelected(otherPresentation)" (click)="onSelectPresentation(otherPresentation)">
+                      <md-card-content style="text-align: center">
+                        <p [class.tc-grey-50] = "checkPresentationSelected(otherPresentation)">{{otherPresentation['presentationTypeTitle']}}</p>
+                      </md-card-content>
+                    </md-card>
+                  </div>
+                </span>
+                  </div>
+                </div>
+                <div flex="40">
+                  <div class="md-content" layout-margin layout="column">
+                    <strong>
+                       Example outputs from this presentation type
+                    </strong>
+                    <div style="height:545px;">
+                      <div *ngFor="let image of imageList; let last = last" [@flyInOut]="'in'">
+                        <md-card>
+                          <img md-card-image src="{{image}}">
+                        </md-card>
+                        <md-divider *ngIf="!last"></md-divider>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </td-step>
+          <td-step #step3 label="Materials" [state]="stateStep3" [disabled]="isStepThreeDisabled()">
+            <div class="pull-top-md">
+              <div layout="row">
+                <h4 md-header>Upload any relevant materials</h4>
+              </div>
+              <div layout="row">
+                <p class="md-body-1 pull-top-md">Upload materials which are relevant to your project. These materials will help in quick ramp up of your team.</p>
+              </div>
+              <div layout="row">
+                <div>
+                  <app-fileupload [containerName]="'upload1'" (onFileUpload)="uploadProjectPart1($event)" (onFileSelect)="setFileContainer1($event)"></app-fileupload>
+                </div>
+                <div>
+                  <app-fileupload [containerName]="'upload2'" (onFileUpload)="uploadProjectPart1($event)" (onFileSelect)="setFileContainer2($event)"></app-fileupload>
+                </div>
+                <div>
+                  <app-fileupload [containerName]="'upload3'" (onFileUpload)="uploadProjectPart1($event)" (onFileSelect)="setFileContainer3($event)"></app-fileupload>
+                </div>
+                <div>
+                  <app-fileupload [containerName]="'upload4'" (onFileUpload)="uploadProjectPart1($event)" (onFileSelect)="setFileContainer4($event)"></app-fileupload>
+                </div>
+              </div>
+            </div>
+            
+              <div class="text-right" style="padding: 10px 0 0;">
+                <!-- <button class="btn-circle" (click)="saveAndGoToDefineProjectIdea(currentProject)"><i style="margin-left: -2px;"class="fa fa-caret-left"></i></button> -->
+                <button class="btn-circle" (click)="toggleCompleteStep3()"><i style="margin-left: 2px;"class="fa fa-caret-right"></i></button>
+              </div>
+            
+          </td-step>
+        </td-steps>
+      </md-card>
+    </div>
+  </ng-template>
+</form>

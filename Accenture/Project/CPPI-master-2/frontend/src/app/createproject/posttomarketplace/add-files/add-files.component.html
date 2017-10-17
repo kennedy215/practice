@@ -1,0 +1,9 @@
+<h2 md-dialog-title>File Selection</h2>
+<md-dialog-content>
+  <app-fileupload [containerName]="conteinerName" (onFileUpload)="uploadFiles()" (onFileSelect)="setFileContainer($event)"></app-fileupload>
+</md-dialog-content>
+<md-dialog-actions class="text-right">
+  <button md-button md-dialog-close (click)="cancelDialog()">Cancel</button>
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <button md-button (click)="closeDialog()" style="background-color: #39a84c;color:#ffffff; margin-left: 8px;">Ok</button>
+</md-dialog-actions>

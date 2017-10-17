@@ -1,0 +1,73 @@
+<div class="bgc-grey-800">
+  <div class="md-display-1 text-left pad-sm tc-green-400">
+    Create Project
+  </div>
+  <div class="md-subhead tc-white text-left pad-sm pad-bottom-sm">
+    <p>Crowdsourced virtual garages will support structured innovation processes executed by ad-hoc distributed teams with transient</p>
+    <p>participation.  There are 3 steps to properly executing an product design.  Steps can be skipped, but it is recommended that they are done in order.</p>
+  </div>
+  <div class="white-bar">
+
+  </div>
+  <div class="grey-bar">
+    <p>We currently only support "Run a Design Sprint". This will not be in the final.</p>
+  </div>
+</div>
+
+
+<div layout="row" class='md-padding' layout-wrap>
+<ng-container *ngFor="let projectType of projectTypes | async; let i=index; trackBy: trackProjectType">
+      <td-expansion-panel disableRipple class="item-card-container">
+
+      <!-- <td-expansion-panel disableRipple class="item-card-container" *ngFor="let projectType of projectTypes | async; let i=index"> -->
+
+      <!-- <td-expansion-panel disableRipple class="item-card-container" *ngFor="let projectType of projectTypes; let i=index"> -->
+        <ng-template td-expansion-panel-header>
+          <md-toolbar>
+            <span><i class="title-icon {{projectType.fontAwesomeIcon}}" style="font-size: 40px" aria-hidden="true"></i>{{i+1}}. {{projectType.title}}</span>
+          </md-toolbar>
+        </ng-template>
+        <td-expansion-summary >
+          <div class="md-padding">
+            <div flex layout-gt-xs="row" layout-align="start center">
+
+              <span class="md-subhead">
+                <p>{{projectType.description}}</p>
+                <p>{{projectType.additionalInfo}}</p></span>
+
+            </div>
+          </div>
+        </td-expansion-summary>
+        <div class="">
+          <md-card class="big-box">
+
+            <!-- <md-card-subtitle>{{projectType.title}}</md-card-subtitle> -->
+            <md-card-content class="small-box" *ngFor="let projectType of projectTypes | async;">  <span><i class="small-icon {{projectType.fontAwesomeIcon}}" style="font-size: 30px" aria-hidden="true"><span></span></i><h2 class="box-titles">{{projectType['title']}}</h2></span><p>{{projectType.description}}</p></md-card-content>
+          </md-card>
+        </div>
+      </td-expansion-panel>
+    </ng-container>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <span class="mat-button-wrapper" *ngFor="let projectType of projectTypes | async;">
+      <div class="mat-button-ripple" md-ripple>
+  <md-card class="item-card-container md-card-selectable" (click)="onSelect(projectType)">
+    <md-card-content style="text-align: center">
+      <div class="tc-green-400">
+          <i class="fa {{projectType.fontAwesomeIcon}}" style="font-size: 75px" aria-hidden="true"></i>
+       </div>
+        <md-card-title>{{projectType.title}}</md-card-title>
+         <p>{{projectType.description}}</p>
+
+      </md-card-content>
+   </md-card>
+      </div>
+      </span> -->

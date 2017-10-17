@@ -1,0 +1,52 @@
+<md-card class="item-card-container">
+  <md-card-header>
+
+    <div class="md-title">Files</div>
+
+
+  </md-card-header>
+  <md-card-content style="text-align: center">
+    <div layout="column" style="position:relative">
+      <div>
+        <td-file-upload #fileUpload defaultColor="accent" activeColor="warn" cancelColor="primary" (select)="selectEvent($event)"
+          (upload)="uploadEventPart1($event)" (cancel)="cancelEvent()" multiple>
+          <md-icon>file_upload</md-icon><span>{{ fileUpload.files?.name }}</span>
+          <ng-template td-file-input-label>
+            <md-icon>attach_file</md-icon><span>Choose file(s)...</span>
+          </ng-template>
+        </td-file-upload>
+        <!--List of files here-->
+        <md-list>
+           <!-- <md-list-item class="md-2-line" *ngFor="let file of fileList">
+            <div class="md-list--item-text">
+              {{file.name}}
+            </div>
+          </md-list-item>  -->
+
+          <!-- <md-list-item class="md-2-line">
+            
+          </md-list-item> -->
+        </md-list>
+        <div class="md-list-item-text" layout="column">
+          <div *ngFor="let file of selectedFileList; let i=index" layout="row" style="position: relative; display: flex;align-items: center; border: 1px solid #ccc; background: #f1f1f1; padding: 8px;margin:5px">
+            <md-icon style="font-size:16px;">attach_file</md-icon>
+            <span>{{file.name}}</span>
+            <!-- <md-icon style="font-size:20px; position: absolute;right:8px;">delete</md-icon> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+
+<!-- <div style="flex-wrap: wrap;" layout="row" *ngIf="fileList?.length>0">
+  <div *ngFor="let upload of fileList" layout="row" style="width:200px;margin:10px;height: 36px;" class="cursor">
+    <i [class]="getFileClass(upload.physicalFileName)" style="font-size: 42px" aria-hidden="true"></i>
+    <div style="margin-left: 10px;" (click)="downloadFile(upload)">
+      {{upload.physicalFileName}}
+    </div>
+    <button md-button (click)="deleteFile(upload)" type="button">
+                      <md-icon aria-hidden="true">delete</md-icon>
+                    </button>
+  </div>
+</div> -->

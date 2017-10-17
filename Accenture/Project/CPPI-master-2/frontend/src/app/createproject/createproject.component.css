@@ -1,0 +1,25 @@
+.el-box{
+  height: 246px;
+  background-color: #39A84C;
+  box-sizing: border-box;
+}
+
+.activeLink {
+background: rgba(93, 214, 98,.4);
+}
+
+ .md-min-width {
+   min-width: 180px;
+ }
+
+ .md-min-height {
+   min-height: 50px;
+ }
+
+ .check-mark{
+  position: absolute;
+  top:14px;
+  right:8px;
+  color:#39a84c;
+  font-size: 20px;
+ }

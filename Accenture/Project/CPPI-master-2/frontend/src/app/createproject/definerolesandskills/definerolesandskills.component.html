@@ -1,0 +1,98 @@
+<form name="definerolesandskills">
+  <ng-template tdLoading [tdLoadingUntil]="!loading" tdLoadingStrategy="overlay">
+    <div *ngIf="currentProject; let currentProject;" flex layout-wrap>
+      <md-card class="main-div-layout" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+        <div layout="column">
+          <h4>Create your team (suggested team structure)</h4>
+          <p class="md-body-1 pull-top-md">We suggest a team composition of 8 members with the below roles. Feel free to add more roles and increase count of resources for each role</p>
+
+        </div>
+        <!--   <div layout="row">
+          <div flex="50">
+            <p>Drag from here</p>
+            <div *ngFor="let item of itemsToDrop" [dragDirective]='item' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" (startDrag)="startDrag(item)">
+              <md-card class="item-card-container  md-min-width md-min-height md-card-selectable">
+                <md-card-content style="text-align: center">
+                  <div>
+                    <i class="fa fa-user" style="font-size: 50px" aria-hidden="true"></i>
+                  </div>
+                  <p>{{item.roleName}}</p>
+                </md-card-content>
+              </md-card>
+            </div>
+          </div>
+
+          <div flex="50">
+            <p>Drop to here</p>
+
+            <div dropDirective (dropEvent)="addDropItem($event)" class="droppable" [dropHighlight]="'highlight'">
+              <div *ngFor="let item of itemsDropped" class="dropItem">
+                <md-card class="item-card-container  md-min-width md-min-height md-card-selectable">
+                  <md-card-content style="text-align: center">
+                    <div>
+                      <i class="fa fa-user" style="font-size: 50px" aria-hidden="true"></i>
+                    </div>
+                    <p>{{item.roleName}}</p>
+                  </md-card-content>
+                </md-card>
+              </div>
+            </div>
+          </div>
+
+        </div>-->
+        <div layout="row">
+
+          <div flex="60">
+            <p class="md-body-1">Key suggested roles</p>
+            <div layout="row" flex layout-wrap dropDirective (dropEvent)="addDropItem($event)" class="droppable" [dropHighlight]="'highlight'">
+              <div class="mat-button-wrapper" *ngFor="let commonRole of selectedRoles ;">
+                <!-- <div class="mat-button-ripple" md-ripple>-->
+                <md-card class="item-card-container  md-min-width md-min-height md-card-selectable">
+                  <md-card-content style="text-align: center">
+                    <div (click)="openSkills(commonRole['roleName'])">
+                      <i class="fa fa-user" style="font-size: 50px" aria-hidden="true"></i>
+                    </div>
+                    <p>{{commonRole['roleName']}}</p>
+
+                    <div layout="row">
+                      <span flex="25"><label></label></span>
+                      <button class="counter-button" (click)="decrement(commonRole)">  <i class="fa fa-minus" style="font-size: 12px" aria-hidden="true"></i></button>
+                      <label class="numberCircle"><span >{{commonRole.requiredUserCount}}</span></label>
+
+                      <button class="counter-button" (click)="commonRole.requiredUserCount = commonRole.requiredUserCount + 1"><i class="fa fa-plus" style="font-size: 12px" aria-hidden="true"></i></button>
+                    </div>
+                  </md-card-content>
+                </md-card>
+
+                <!-- </div>-->
+              </div>
+            </div>
+          </div>
+          <div flex="40">
+            <p class="md-body-1">Other roles</p>
+            <div layout="row" flex layout-wrap>
+              <div class="mat-button-wrapper" *ngFor="let otherRole of otherRoles " [dragDirective]='otherRole' [dragHightlight]="'highlight'" (releaseDrop)="releaseDrop($event)" (startDrag)="startDrag(item)">
+                <div class="mat-button-ripple" md-ripple>
+
+                  <md-card class="item-card-container  md-min-width md-min-height md-card-selectable">
+                    <md-card-content style="text-align: center; color:#999999">
+                      <div>
+                        <i class="fa fa-user" style="font-size: 50px" aria-hidden="true"></i>
+                      </div>
+                      <p>{{otherRole['roleName']}}</p>
+                    </md-card-content>
+                  </md-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-right" style="padding: 10px 0 0;">
+          <button class="btn-circle" (click)="redirectToDefineIdea()"><i style="margin-left: -2px;"class="fa fa-caret-left"></i></button>
+          <button class="btn-circle" (click)="saveRolesAndSkills(currentProject)"><i style="margin-left: 2px;"class="fa fa-caret-right"></i></button>
+        </div>
+      </md-card>
+    </div>
+  </ng-template>
+</form>

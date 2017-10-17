@@ -1,0 +1,15 @@
+<md-card>
+<md-card-title>
+      {{pocketTitle}}
+    <button md-mini-fab class="btn-mini" (click)="openFileAddDialog()" type="button"><md-icon>add</md-icon></button>
+</md-card-title>
+<div style="flex-wrap: wrap;" layout="row" *ngIf="fileList?.length>0">
+  <div *ngFor="let upload of fileList" layout="row" style="width:200px;margin:10px;height: 36px;" class="cursor">
+    <i [class]="getFileClass(upload.physicalFileName)" style="font-size: 24px" aria-hidden="true"></i>
+    <div style="margin-left: 10px;" (click)="downloadFile(upload)">
+      {{upload.physicalFileName}}
+    </div>
+    <button md-mini-fab class="btn-mini" (click)="deleteFile(upload)" type="button"><md-icon>delete</md-icon></button>
+  </div>
+</div>
+</md-card>

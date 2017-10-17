@@ -1,0 +1,119 @@
+<form>
+  <ng-template tdLoading [tdLoadingUntil]="!loading" tdLoadingStrategy="overlay">
+    <div *ngIf="currentProject; let currentProject;" flex layout-wrap>
+      <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']" style="padding: 30px;">
+        <div>
+          <span md-subheader>How big of a design will this be?</span>
+        </div>
+        <div layout="row" layout-wrap flex layout-align="center">
+          <span class="mat-button-wrapper md-cards-size" (click)="onSelectDesignSize('small')">
+              <div class="mat-button-ripple" md-ripple>
+                <md-card class="item-card-container md-min-height md-min-width" [class.md-card-selectable] = "currentProject.size !== 'small'" [class.bgc-green-600]="currentProject.size === 'small'"><!-- -->
+                  <md-card-content style="text-align: center">
+                    <div [class.tc-grey-50] = "currentProject.size === 'small'"> <!---->
+                      <i class="fa fa-calendar-o fa-4" style="font-size: 75px"></i> <!-- class="fa {{potentialTarget.fontAwesomeIcon}}"-->
+                      <!--<i class="material-icons">supervisor_account</i>-->
+                    </div>
+                    <p [class.tc-grey-50] = "currentProject.size === 'small'"><strong>Small</strong><br/>
+                    Easy to Grasp<br/>
+                    Small Team</p><!---->
+                  </md-card-content>
+                </md-card>
+              </div>
+            </span>
+          <span class="mat-button-wrapper" (click)="onSelectDesignSize('medium')">
+              <div class="mat-button-ripple" md-ripple>
+                <md-card class="item-card-container md-min-height md-min-width md-card-selectable" tabindex="0" [class.md-card-selectable] = "currentProject.size !== 'medium'" [class.bgc-green-600]="currentProject.size === 'medium'"><!--[class.md-card-selectable] = "potentialTarget.title !== currentProject.target" [class.bgc-green-600]="potentialTarget.title === currentProject.target"-->
+                  <md-card-content style="text-align: center">
+                    <div [class.tc-grey-50] = "currentProject.size === 'medium'"> <!--[class.tc-green-400] = "potentialTarget.title !== currentProject.target" [class.tc-grey-50] = "potentialTarget.title === currentProject.target"-->
+                      <i class="fa fa-calendar-o fa-4" style="font-size: 75px"></i> <!-- class="fa {{potentialTarget.fontAwesomeIcon}}"-->
+                      <!--<i class="material-icons">supervisor_account</i>-->
+                    </div>
+                    <p [class.tc-grey-50] = "currentProject.size === 'medium'"><strong>Medium</strong><br/>
+                   Somewhat complex<br/>
+                    (requires some ramp up)</p><!--[class.tc-grey-50] = "potentialTarget.title === currentProject.target"-->
+                  </md-card-content>
+                </md-card>
+              </div>
+            </span>
+          <span class="mat-button-wrapper" (click)="onSelectDesignSize('large')">
+              <div class="mat-button-ripple" md-ripple >
+                <md-card class="item-card-container md-min-width" [class.md-card-selectable] = "currentProject.size !== 'large'" [class.bgc-green-600]="currentProject.size === 'large'">
+                  <md-card-content style="text-align: center">
+                    <div [class.tc-grey-50] = "currentProject.size === 'large'">
+                      <i class="fa fa-calendar-o" style="font-size: 75px" aria-hidden="true"></i>
+                    </div>
+                    <p [class.tc-grey-50] = "currentProject.size === 'large'"><strong>Large</strong><br/>
+                    Complex<br/>
+                    (requires special skills)</p>
+                  </md-card-content>
+                </md-card>
+              </div>
+            </span>
+        </div>
+        <md-divider class="push-top-md"></md-divider><br/>
+        <div layout="column" flex layout-wrap>
+          <span> Set a time frame for this sprint</span>
+          <div layout="row">
+            <div flex="40">
+              <md-input-container>
+                <input mdInput [mdDatepicker]="pickerStart" placeholder="Choose a date" [value]="currentProject.startDate" [min]="minDate">
+                <button mdSuffix [mdDatepickerToggle]="pickerStart"></button>
+              </md-input-container>
+              <md-datepicker #pickerStart [touchUi]="true" (selectedChanged)="onStartDateSelectionChange($event)"></md-datepicker>
+
+            </div>
+            <span flex="20">OR</span>
+            <div flex="40">
+              <md-input-container>
+                <input mdInput [mdDatepicker]="pickerEnd" placeholder="Choose a date" [value]="currentProject.endDate" [min]="minDate">
+                <button mdSuffix [mdDatepickerToggle]="pickerEnd"></button>
+              </md-input-container>
+              <md-datepicker #pickerEnd [touchUi]="true" (selectedChanged)="onEndDateSelectionChange($event)"></md-datepicker>
+
+            </div>
+          </div>
+          <div layout="row">
+            <span flex="50"> When do you want to start?</span>
+            <span flex="50">When do you need this completed by?</span>
+          </div>
+        </div>
+        <md-divider class="push-top-md"></md-divider><br/>
+        <div layout="column" flex layout-wrap>
+          <span>What kinds of tools do you want to use?</span><br/>
+          <span>Currently Chosen tools</span>
+          <div style="flex-wrap: wrap;" layout="row" *ngIf="currentProject.selectedTools?.length>0">
+            <div *ngFor="let tool of currentProject.selectedTools">
+
+              <img md-card-image src="{{tool.logo}}" style="padding:10px; width: 100px; height: 50px; border: none;">
+
+            </div>
+          </div>
+          <div *ngIf="currentProject.selectedTools?.length===0">
+            <span>None of a tools is selected yet.</span>
+          </div>
+        </div>
+        <md-divider class="push-top-md"></md-divider><br/>
+        <div layout="column">
+          <span>Select more tools</span>
+          <md-tab-group *ngIf="presentationTools && currentProject.selectedTools">
+            <md-tab label="Collaborative Workspaces">
+              <app-toollist [tools]="presentationTools.Primary" [selectedTools]="currentProject.selectedTools" (onToolSelect)="addChosenTool($event)" (onToolDeselect)="removeChosenTool($event)"></app-toollist>
+            </md-tab>
+            <md-tab label="Communication" flex>
+              <app-toollist [tools]=presentationTools.Communication [selectedTools]="currentProject.selectedTools" (onToolSelect)="addChosenTool($event)" (onToolDeselect)="removeChosenTool($event)"></app-toollist>
+              <md-divider></md-divider>
+            </md-tab>
+            <md-tab label="Document Repository">
+              <app-toollist [tools]=presentationTools.Repository [selectedTools]="currentProject.selectedTools" (onToolSelect)="addChosenTool($event)" (onToolDeselect)="removeChosenTool($event)"></app-toollist>
+            </md-tab>
+          </md-tab-group>
+        </div>
+        <div class="text-right" style="padding: 10px 0 0;">
+        <button class="btn-circle" (click)="saveAndGoToDefineProjectIdea(currentProject)"><i style="margin-left: -2px;"class="fa fa-caret-left"></i></button>
+        <button class="btn-circle" (click)="saveIdeaParaMeters(currentProject)"><i style="margin-left: 2px;"class="fa fa-caret-right"></i></button>
+        </div>
+      </md-card>
+    </div>
+  </ng-template>
+</form>

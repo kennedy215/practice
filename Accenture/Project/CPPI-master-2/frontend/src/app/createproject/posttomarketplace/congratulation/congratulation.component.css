@@ -1,0 +1,26 @@
+.congratulation-button{
+    width: 181px;
+    height: 41px;
+    border-radius: 10px;
+    background-color: #393a39;
+    color: #ffffff;
+}
+
+.congratulation{
+/* Congratulations! */
+    font-family: Arial;
+    font-size: 30px;
+    color: #39a84c;
+    font-weight: bold;
+    text-decoration: none solid rgb(57, 168, 76);
+    text-align: center;
+}
+
+.your-project-has{
+    font-family: Arial;
+    font-size: 25px;
+    color: #393a39;
+    text-decoration: none solid rgb(57, 58, 57);
+    text-align: center;
+}
+
